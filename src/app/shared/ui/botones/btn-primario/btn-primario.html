@@ -1,0 +1,8 @@
+<button
+  class="btn-primario"
+  [type]="type"
+  [disabled]="disabled"
+  [attr.aria-label]="ariaLabel || null"
+  (click)="type !== 'submit' ? onClick() : null">
+  <ng-content></ng-content>
+</button>

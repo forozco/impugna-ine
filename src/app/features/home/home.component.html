@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<main class="home">
+  <div class="container">
+    <h2>¡Bienvenido al Sistema INE!</h2>
+
+    <div *ngIf="user" class="user-info">
+      <h3>Información del Usuario</h3>
+      <div class="user-details">
+        <p><strong>Usuario:</strong> {{ user.username }}</p>
+        <p><strong>DN:</strong> {{ user.dn }}</p>
+
+        <div *ngIf="user.groups && user.groups.length > 0">
+          <h4>Grupos LDAP:</h4>
+          <ul>
+            <li *ngFor="let group of user.groups">{{ group }}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="user.authorities && user.authorities.length > 0">
+          <h4>Permisos:</h4>
+          <ul>
+            <li *ngFor="let authority of user.authorities">{{ authority }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary" (click)="logout()">Cerrar Sesión</button>
+    </div>
+
+    <div *ngIf="!user" class="no-user">
+      <p>No se encontró información del usuario.</p>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>
