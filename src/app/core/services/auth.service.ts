@@ -2,6 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { MockDataService } from './mock-data.service';
 
 interface LoginResponse {
   ok: boolean;
@@ -14,6 +16,7 @@ interface LoginResponse {
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
+  private mockService = inject(MockDataService);
   private api = '/api'; // Usando proxy
 
   get token(): string | null {
@@ -25,6 +28,12 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
+    // Verificar si debemos usar datos mock
+    if (this.mockService.shouldUseMockData()) {
+      console.log('🎭 [AuthService] Usando modo MOCK para login');
+      return this.mockService.mockLogin(username, password);
+    }
+
     console.log('🔐 [AuthService] Enviando solicitud de login LDAP:', {
       username,
       url: `${this.api}/auth/login`,

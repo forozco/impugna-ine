@@ -201,6 +201,53 @@ Este proyecto usa:
 - **Features:** Módulos de funcionalidades con lazy loading
 - **Shared:** Componentes reutilizables y utilidades
 
+## 🎭 Modo de Desarrollo con Mock Data
+
+### **Configuración de Entornos**
+
+**Entorno Local (LDAP Real):**
+```bash
+npm start
+# Usa environment.ts - Conecta al servidor LDAP real en localhost:4000
+```
+
+**Entorno de Desarrollo (Mock Data):**
+```bash
+npm run start:dev
+# Usa environment.dev.ts - Utiliza datos simulados sin LDAP
+```
+
+### **Usuarios de Prueba (Modo Mock)**
+
+Cuando uses `npm run start:dev`, puedes probar con:
+
+**Usuario Principal:**
+- Usuario: `admin`
+- Contraseña: `admin`
+- Datos: Carga desde `/assets/mock-data/login-response.json` (orlando.gutierrez)
+
+**Usuario Alternativo:**
+- Usuario: `test`
+- Contraseña: `test`
+- Datos: Usuario de prueba generado dinámicamente
+
+**Credenciales Incorrectas:**
+- Cualquier otra combinación mostrará error de autenticación
+
+### **Estructura de Mock Data**
+
+```
+src/
+├── assets/
+│   └── mock-data/
+│       └── login-response.json    # Respuesta LDAP simulada
+├── app/core/services/
+│   └── mock-data.service.ts       # Servicio de datos mock
+└── environments/
+    ├── environment.ts             # LDAP real
+    └── environment.dev.ts         # Mock data
+```
+
 ## 🔄 Gestión de Versiones
 
 Las dependencias usan versionado `~` para permitir actualizaciones de parches manteniendo compatibilidad:
