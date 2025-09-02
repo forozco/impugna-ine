@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://qa-api.impugna-ine.com',
-  environment: 'qa'
+  apiUrl: 'http://localhost:4000',
+  environment: 'qa',
+  useMockData: false, // Usar LDAP real en QA
+  mockDataPath: '' // No necesario en QA
 };
