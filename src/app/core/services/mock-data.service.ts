@@ -24,7 +24,7 @@ export class MockDataService {
    * Simula una respuesta de login exitosa usando datos mock
    */
   mockLogin(username: string, password: string): Observable<LoginResponse> {
-    console.log('🎭 [MockDataService] Simulando login con datos mock para:', username);
+    console.log('[MockDataService] Simulando login con datos mock para:', username);
 
     // Simular diferentes usuarios para testing
     if (username === 'admin' && password === 'admin') {

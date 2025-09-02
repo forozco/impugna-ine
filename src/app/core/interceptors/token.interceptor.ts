@@ -27,7 +27,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
         });
       },
       error: (error) => {
-        console.error('❌ [TokenInterceptor] Error en la request:', {
+        console.error('[TokenInterceptor] Error en la request:', {
           url: req.url,
           error: error,
           status: error?.status,

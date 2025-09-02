@@ -19,12 +19,12 @@ export class HomeComponent implements OnInit {
     const userData = localStorage.getItem('user');
     if (userData) {
       this.user = JSON.parse(userData);
-      console.log('👤 [Home] Datos del usuario:', this.user);
+      console.log('[Home] Datos del usuario:', this.user);
     }
   }
 
   logout() {
     this.auth.logout();
-    console.log('👋 [Home] Usuario cerró sesión');
+    console.log('[Home] Usuario cerró sesión');
   }
 }

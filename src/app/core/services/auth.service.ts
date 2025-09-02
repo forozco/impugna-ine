@@ -30,11 +30,11 @@ export class AuthService {
   login(username: string, password: string) {
     // Verificar si debemos usar datos mock
     if (this.mockService.shouldUseMockData()) {
-      console.log('🎭 [AuthService] Usando modo MOCK para login');
+      console.log('[AuthService] Usando modo MOCK para login');
       return this.mockService.mockLogin(username, password);
     }
 
-    console.log('🔐 [AuthService] Enviando solicitud de login LDAP:', {
+    console.log('[AuthService] Enviando solicitud de login LDAP:', {
       username,
       url: `${this.api}/auth/login`,
       timestamp: new Date().toISOString()
@@ -45,11 +45,11 @@ export class AuthService {
 
   // Método para probar la conectividad con el backend
   testConnection() {
-    console.log('🌐 [AuthService] Probando conectividad con el backend...');
+    console.log('[AuthService] Probando conectividad con el backend...');
     return this.http.get(`${this.api}/health`).pipe(
-      tap(response => console.log('✅ [AuthService] Backend disponible:', response)),
+      tap(response => console.log('[AuthService] Backend disponible:', response)),
       tap({
-        error: (error) => console.error('❌ [AuthService] Backend no disponible:', error)
+        error: (error) => console.error('[AuthService] Backend no disponible:', error)
       })
     );
   }
@@ -57,7 +57,7 @@ export class AuthService {
   logout() {
     this.token = null;
     localStorage.removeItem('user');
-    console.log('👋 [AuthService] Sesión cerrada, redirigiendo a login');
+    console.log('[AuthService] Sesión cerrada, redirigiendo a login');
     this.router.navigate(['/login']);
   }
 
