@@ -1,6 +1,6 @@
 <div class="login-container" role="main" aria-label="Formulario de inicio de sesión">
   <section class="login-box" aria-labelledby="login-instructions">
-    <form (ngSubmit)="login()" #loginForm="ngForm" aria-describedby="login-instructions">
+    <form (ngSubmit)="login()" #loginForm="ngForm" aria-describedby="login-instructions" autocomplete="off">
       <h6 id="login-instructions" class="text-center space-24 space-top-2 ">Ingresa tu Cuenta Única de Acceso</h6>
       <p class="font-12-regular space-16 space-top-2 ">Dato obligatorio<span class="requerido">*</span></p>
       <label for="username" class="parrafo-regular space-12 space-top-2 ">
@@ -17,6 +17,7 @@
           aria-required="true"
           #usernameField="ngModel"
           placeholder="Usuario"
+          autocomplete="off"
         />
       <p id="username-help" class="font-12-regular space-16 space-top-2 ">Ingresa con tu usuario INE</p>
         <div class="password-header space-8 space-top-2 ">
@@ -37,6 +38,7 @@
           aria-describedby="password-help"
           #passwordField="ngModel"
           placeholder="Contraseña"
+          autocomplete="new-password"
         />
       <p id="password-help" class="font-12-regular">Campo de contraseña</p>
 
