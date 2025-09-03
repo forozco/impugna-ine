@@ -1,22 +1,38 @@
-# 🚀 ImpugnaIne
+# ImpugnaIne
 
 Sistema de autenticación con LDAP desarrollado en Angular 20 para el Instituto Nacional Electoral.
 
-## 🔧 Prerrequisitos
+## Prerrequisitos
 
 - Node.js (v18 o superior)
 - npm (v9 o superior)
 - Angular CLI (`npm install -g @angular/cli`)
 - Servidor LDAP en localhost:4000 (para ambientes QA/Producción)
 
-## 📦 Dependencias
+## Dependencias
 
 - **Angular 20.2.x** - Framework principal
 - **Bootstrap 5.3.x** - Componentes UI y estilos
 - **RxJS 7.8.x** - Programación reactiva
-- **TypeScript 5.7.x** - Tipado estático
+- **TypeS## Troubleshooting
 
-## 📁 Estructura del Proyecto
+### **Problemas Comunes**
+
+**Error: "Http failure response for http://localhost:4200/api/auth/login: 404"**
+- **Solución:** Verifica que el backend esté corriendo en puerto 4000
+- **Comando:** `curl http://localhost:4000/api/auth/login`
+
+**Error: "Backend no disponible"**
+- **Solución:** Usar modo DEV con mock data: `npm run start:dev`
+
+**Error: "Credenciales incorrectas"**
+- **Modo DEV:** Usar `admin/admin` o `test/test`
+- **Modo QA:** Usar credenciales LDAP válidas
+
+**Error: "CORS" o problemas de proxy**
+- **Solución:** Verificar `proxy.conf.json` y que Angular use `--proxy-config`ipado estático
+
+## Estructura del Proyecto
 
 ```
 src/
@@ -77,7 +93,7 @@ src/
 └── styles.scss
 ```
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 1. **Instalar dependencias:**
    ```bash
@@ -98,7 +114,7 @@ src/
 
 3. **Abrir navegador:** Navegar a `http://localhost:4200/`
 
-## 🛠️ Scripts Disponibles por Ambiente
+## Scripts Disponibles por Ambiente
 
 ### **Scripts de Desarrollo**
 - **`npm run start:dev`** - Servidor con datos mock (sin backend)
@@ -116,7 +132,7 @@ src/
 - **`npm test`** - Ejecutar pruebas unitarias
 - **`npm run watch`** - Construir en modo observación
 
-## ⚡ Generación de Código
+## Generación de Código
 
 ```bash
 # Generar componente
@@ -135,54 +151,54 @@ ng generate interceptor core/interceptors/http
 ng generate --help
 ```
 
-## 🌍 Configuración de Ambientes
+## Configuración de Ambientes
 
 El proyecto está configurado para trabajar con **3 ambientes diferentes** que se adaptan a las necesidades de desarrollo y despliegue:
 
-### 🔧 **DEV - Desarrollo con Mock Data**
+### **DEV - Desarrollo con Mock Data**
 ```bash
 npm run start:dev
 ```
 - **Propósito:** Desarrollo rápido sin dependencias externas
 - **Archivo:** `environment.dev.ts`
 - **Características:**
-  - ✅ Usa datos simulados (`useMockData: true`)
-  - ✅ No requiere servidor LDAP
-  - ✅ Ideal para desarrollo frontend
-  - ✅ Incluye usuarios de prueba predefinidos
+  - Usa datos simulados (`useMockData: true`)
+  - No requiere servidor LDAP
+  - Ideal para desarrollo frontend
+  - Incluye usuarios de prueba predefinidos
 
-### 🧪 **QA - Testing con LDAP Real**
+### **QA - Testing con LDAP Real**
 ```bash
 npm run start:qa
 ```
 - **Propósito:** Testing con autenticación real
 - **Archivo:** `environment.qa.ts`
 - **Características:**
-  - 🔐 Conecta al servidor LDAP real (`useMockData: false`)
-  - 🌐 Usa proxy para backend local
-  - 🔄 Perfecto para pruebas de integración
-  - 📊 Validación completa del flujo de autenticación
+  - Conecta al servidor LDAP real (`useMockData: false`)
+  - Usa proxy para backend local
+  - Perfecto para pruebas de integración
+  - Validación completa del flujo de autenticación
 
-### 🚀 **PROD - Producción**
+### **PROD - Producción**
 ```bash
 npm run start:prod
 ```
 - **Propósito:** Ambiente de producción
 - **Archivo:** `environment.prod.ts`
 - **Características:**
-  - 🔐 LDAP real en servidores de producción
-  - ⚡ Optimizado para rendimiento
-  - 🚫 Sin proxy (conexión directa)
-  - 🔒 Configuración segura
+  - LDAP real en servidores de producción
+  - Optimizado para rendimiento
+  - Sin proxy (conexión directa)
+  - Configuración segura
 
-### 📁 Estructura de Configuración
+### Estructura de Configuración
 ```typescript
 // environment.dev.ts
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:4000',
   environment: 'dev',
-  useMockData: true,  // 🎭 Datos simulados
+  useMockData: true,  // Datos simulados
   mockDataPath: '/assets/mock-data/'
 };
 
@@ -191,7 +207,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:4000',
   environment: 'qa',
-  useMockData: false,  // 🔐 LDAP real
+  useMockData: false,  // LDAP real
   mockDataPath: ''
 };
 
@@ -200,12 +216,12 @@ export const environment = {
   production: true,
   apiUrl: 'https://api.impugna-ine.com',
   environment: 'production',
-  useMockData: false,  // 🔐 LDAP real
+  useMockData: false,  // LDAP real
   mockDataPath: ''
 };
 ```
 
-## 🏗️ Construcción y Despliegue
+## Construcción y Despliegue
 
 ### **Builds por Ambiente**
 
@@ -224,13 +240,13 @@ npm run build:prod
 
 | Build | Optimización | Source Maps | Minificación | Tamaño |
 |-------|-------------|-------------|-------------|---------|
-| DEV | Básica | ✅ Si | ❌ No | Grande |
-| QA | Media | ✅ Si | ✅ Parcial | Medio |
-| PROD | Máxima | ❌ No | ✅ Total | Pequeño |
+| DEV | Básica | Si | No | Grande |
+| QA | Media | Si | Parcial | Medio |
+| PROD | Máxima | No | Total | Pequeño |
 
 Los artefactos se generan en `dist/` y están listos para despliegue.
 
-## 🧪 Testing y Desarrollo
+## Testing y Desarrollo
 
 ### **Flujo de Trabajo Recomendado**
 
@@ -250,7 +266,7 @@ npm test
 - **QA:** Logs de integración + validación LDAP
 - **PROD:** Logs mínimos optimizados
 
-## 🔧 Configuración Avanzada
+## Configuración Avanzada
 
 ### **Personalización de Ambientes**
 
@@ -285,7 +301,7 @@ Para añadir un nuevo ambiente:
    "start:staging": "ng serve --configuration=staging"
    ```
 
-## 🧪 Ejecutar Pruebas Unitarias
+## Ejecutar Pruebas Unitarias
 
 Para ejecutar pruebas unitarias con el ejecutor de pruebas [Karma](https://karma-runner.github.io), usa el siguiente comando:
 
@@ -293,7 +309,7 @@ Para ejecutar pruebas unitarias con el ejecutor de pruebas [Karma](https://karma
 ng test
 ```
 
-## 🔍 Pruebas
+## Pruebas
 
 ### Pruebas Unitarias
 ```bash
@@ -308,20 +324,20 @@ ng e2e
 ```
 *Nota: El framework E2E necesita ser configurado por separado.*
 
-## 🎨 Estilos
+## Estilos
 
 Este proyecto usa:
 - **Bootstrap 5.3.x** para componentes UI
 - **SCSS** para estilos personalizados
 - Estilos globales en `src/styles.scss`
 
-## 📁 Arquitectura del Proyecto
+## Arquitectura del Proyecto
 
 - **Core:** Guards, interceptors y servicios singleton
 - **Features:** Módulos de funcionalidades con lazy loading
 - **Shared:** Componentes reutilizables y utilidades
 
-## 🎭 Modo de Desarrollo con Mock Data
+## Modo de Desarrollo con Mock Data
 
 ### **¿Cuándo usar cada ambiente?**
 
@@ -335,17 +351,17 @@ Este proyecto usa:
 
 Cuando uses `npm run start:dev`, puedes autenticarte con:
 
-**👤 Usuario Principal:**
+**Usuario Principal:**
 - **Usuario:** `admin`
 - **Contraseña:** `admin`
 - **Datos:** Carga perfil completo de orlando.gutierrez desde mock data
 
-**🔧 Usuario de Testing:**
+**Usuario de Testing:**
 - **Usuario:** `test`
 - **Contraseña:** `test`
 - **Datos:** Usuario de prueba con permisos básicos
 
-**❌ Error de Testing:**
+**Error de Testing:**
 - **Cualquier otra combinación** mostrará error de credenciales
 
 ### **Credenciales LDAP Reales (Modo QA/PROD)**
@@ -412,7 +428,7 @@ src/
 └── proxy.conf.json                     # Configuración del proxy
 ```
 
-## 🔐 Sistema de Autenticación
+## Sistema de Autenticación
 
 ### **Flujo de Autenticación**
 
@@ -434,7 +450,7 @@ src/
 - **LoginGuard:** Previene acceso al login si ya está logueado
 - **TokenInterceptor:** Añade JWT a requests HTTP
 
-## 🔄 Gestión de Versiones y Dependencias
+## Gestión de Versiones y Dependencias
 
 ### **Versionado de Dependencias**
 Las dependencias usan versionado `~` para permitir actualizaciones de parches manteniendo compatibilidad:
@@ -455,18 +471,18 @@ npm update
 
 ### **Problemas Comunes**
 
-**❌ Error: "Http failure response for http://localhost:4200/api/auth/login: 404"**
+**Error: "Http failure response for http://localhost:4200/api/auth/login: 404"**
 - **Solución:** Verifica que el backend esté corriendo en puerto 4000
 - **Comando:** `curl http://localhost:4000/api/auth/login`
 
-**❌ Error: "Backend no disponible"**
+**Error: "Backend no disponible"**
 - **Solución:** Usar modo DEV con mock data: `npm run start:dev`
 
-**❌ Error: "Credenciales incorrectas"**
+**Error: "Credenciales incorrectas"**
 - **Modo DEV:** Usar `admin/admin` o `test/test`
 - **Modo QA:** Usar credenciales LDAP válidas
 
-**❌ Error: "CORS" o problemas de proxy**
+**Error: "CORS" o problemas de proxy**
 - **Solución:** Verificar `proxy.conf.json` y que Angular use `--proxy-config`
 
 ### **Logs de Debug**
@@ -481,7 +497,7 @@ Todos los servicios incluyen logs detallados con formato:
 - `[MockDataService] Simulando login con datos mock`
 - `[LoginComponent] Login exitoso, guardando token`
 
-## 📚 Recursos y Documentación
+## Recursos y Documentación
 
 ### **Enlaces Útiles**
 - [Documentación Angular 20](https://angular.dev/)
@@ -495,7 +511,7 @@ Todos los servicios incluyen logs detallados con formato:
 - [Lazy Loading Best Practices](https://angular.dev/guide/lazy-loading-ngmodules)
 - [Authentication Patterns](https://angular.dev/guide/security)
 
-## 🤝 Contribución
+## Contribución
 
 ### **Flujo de Git**
 1. Crear feature branch desde `dev`
